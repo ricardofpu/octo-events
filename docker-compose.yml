@@ -1,0 +1,11 @@
+version: '2'
+services:
+ postgres:
+   image: postgres:9.6
+   ports:
+     - "5432:5432"
+   environment:
+     - POSTGRES_DB=octo_events
+     - POSTGRES_USER=octo_events
+     - POSTGRES_PASSWORD=octo_events
+     - MAX_CONNECTIONS=300

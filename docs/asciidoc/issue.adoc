@@ -1,0 +1,5 @@
+== Issue
+
+include::{snippets}/issue-controller-test/should create event/auto-section.adoc[]
+
+include::{snippets}/issue-controller-test/should find all events by number/auto-section.adoc[]

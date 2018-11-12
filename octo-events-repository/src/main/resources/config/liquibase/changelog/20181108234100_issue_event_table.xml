@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="20181108234100-1" author="ricardo.borges">
+        <createTable tableName="issue_event">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="action" type="java.sql.Types.VARCHAR">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="url" type="java.sql.Types.VARCHAR">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="number" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="title" type="java.sql.Types.VARCHAR">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="username" type="jsonb">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="created_at" type="java.sql.Types.TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="updated_at" type="java.sql.Types.TIMESTAMP">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

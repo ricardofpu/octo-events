@@ -1,0 +1,103 @@
+{
+	"id": "50b6e36c-2e57-4014-8816-7f130eef731e",
+	"name": "octo-events",
+	"description": "",
+	"auth": null,
+	"events": null,
+	"variables": [],
+	"order": [
+		"d32027a7-ed27-416f-8e46-e7c4a9aa7299",
+		"f273d914-2558-464c-a3d9-f6dcb8d269d2"
+	],
+	"folders_order": [],
+	"folders": [],
+	"requests": [
+		{
+			"id": "d32027a7-ed27-416f-8e46-e7c4a9aa7299",
+			"name": "1 - Create Issue",
+			"url": "http://localhost:8080/v1/issues/events",
+			"description": "",
+			"data": [],
+			"dataMode": "raw",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"method": "POST",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "eeede3f2-1685-442c-891f-8d6b4a6a22f4",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status Code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"pm.test(\"Response with JSON Body\", function () {",
+							"     pm.response.to.be.withBody;",
+							"     pm.response.to.be.json; ",
+							"});",
+							"",
+							"tests[\"id can not be null\"] = JSON.parse(responseBody).id !== null;",
+							"",
+							"var number = JSON.parse(responseBody).issue.number",
+							"postman.setGlobalVariable(\"number\", number);"
+						]
+					}
+				}
+			],
+			"folder": null,
+			"rawModeData": "{\n\t\"action\":\"opened\",\n\t\"issue\":{\n\t\t\"url\":\"http://url.com.br\",\n\t\t\"id\":13171890,\n\t\t\"number\":7060,\n\t\t\"title\":\"Title\",\n\t\t\"user\":{\n\t\t\t\"login\":\"login\",\n\t\t\t\"id\":7806708013,\n\t\t\t\"url\":\"http://user.url.com.br\"\n\t\t},\n\t\"createdAt\":\"2018-11-09T16:14:31.242\"\n\t}\n}",
+			"headers": "Content-Type: application/json\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "f273d914-2558-464c-a3d9-f6dcb8d269d2",
+			"name": "2 - Find Issue Events",
+			"url": "http://localhost:8080/v1/issues/{{number}}/events",
+			"description": "",
+			"data": [],
+			"dataMode": "raw",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "af97cf69-b4b2-43cf-ae3b-e3a8756b5282",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status Code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response with JSON Body\", function () {",
+							"     pm.response.to.be.withBody;",
+							"     pm.response.to.be.json; ",
+							"});"
+						]
+					}
+				}
+			],
+			"folder": null,
+			"rawModeData": "{\n\t\"action\":\"opened\",\n\t\"issue\":{\n\t\t\"url\":\"http://url.com.br\",\n\t\t\"id\":13171890,\n\t\t\"number\":7060,\n\t\t\"title\":\"Title\",\n\t\t\"user\":{\n\t\t\t\"login\":\"login\",\n\t\t\t\"id\":7806708013,\n\t\t\t\"url\":\"http://user.url.com.br\"\n\t\t},\n\t\"createdAt\":\"2018-11-09T16:14:31.242\"\n\t}\n}",
+			"headers": "Content-Type: application/json\n",
+			"pathVariables": {}
+		}
+	]
+}
